@@ -1,7 +1,7 @@
 module IronSdk
   # 
   class QueueInfo < BaseObject
-    attr_accessor :project_id, :name, :message_timeout, :message_expiration, :consistency_factor, :replicase, :type, :push, :alerts
+    attr_accessor :project_id, :name, :message_timeout, :message_expiration, :consistency_factor, :replicas, :type, :push, :alerts
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -22,7 +22,7 @@ module IronSdk
         :'consistency_factor' => :'consistency_factor',
         
         # 
-        :'replicase' => :'replicase',
+        :'replicas' => :'replicas',
         
         # Types can be [multicast, unicast, pull] where multicast and unicast define a push queue. If a type isnt specified, it defaults to pull. If the push field is defined, the queue will be crated as a push queue and must contain at least one subscriber. Everything else in the push map is optional.\&quot;\n
         :'type' => :'type',
@@ -44,7 +44,7 @@ module IronSdk
         :'message_timeout' => :'int',
         :'message_expiration' => :'int',
         :'consistency_factor' => :'string',
-        :'replicase' => :'int',
+        :'replicas' => :'int',
         :'type' => :'string',
         :'push' => :'Push',
         :'alerts' => :'array[Alert]'
@@ -79,8 +79,8 @@ module IronSdk
         @consistency_factor = attributes[:'consistency_factor']
       end
       
-      if attributes[:'replicase']
-        @replicase = attributes[:'replicase']
+      if attributes[:'replicas']
+        @replicas = attributes[:'replicas']
       end
       
       if attributes[:'type']

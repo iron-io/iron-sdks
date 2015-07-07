@@ -12,7 +12,7 @@ describe @mq_api do
   describe "#get_queues" do
     it "should return a list of queues" do
       res = @mq_api.get_queues(@project_id)
-      expect(res.queues.size).to eq 2
+      expect(res.queues.size).to be > 2
     end
   end
 
@@ -162,29 +162,6 @@ describe @mq_api do
     end
   end
 
-  describe "#add_alert" do
-    it "should add an alert" do
-      alert = { alerts: [ { type: "fixed", direction: "asc", trigger: 5, queue: "test"}]}
-      res = @mq_api.add_alert(@project_id, 'testpush', alert)
-      expect(res.msg).to eq "Alerts were added."
-    end
-  end
-
-  describe "#delete_alerts" do
-    it "should delete an alert" do
-      alert = { alerts: [ { type: "fixed", direction: "asc", trigger: 5, queue: "test"}]}
-      res = @mq_api.delete_alerts(@project_id, 'testpush', alert)
-      expect(res.msg).to eq "Alerts were deleted."
-    end
-  end
-
-  describe "#put_alerts" do
-    it "should replace the alerts" do
-      alert = { alerts: [ { type: "fixed", direction: "asc", trigger: 5, queue: "test"}]}
-      res = @mq_api.put_alerts(@project_id, 'testpush', alert)
-      expect(res.msg).to eq "Alerts were replaced."
-    end
-  end
 
   describe "#post_subscribers and #put_subscribers" do
     it "should add a subscriber" do
